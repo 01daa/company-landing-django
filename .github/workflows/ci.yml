@@ -11,6 +11,8 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
+      with:
+        fetch-depth: 0  # <– щоб не було shallow clone
 
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -30,10 +32,11 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
+      with:
+        fetch-depth: 0  # <– теж розширений клон
 
     - name: Install Heroku CLI
-      run: |
-        curl https://cli-assets.heroku.com/install.sh | sh
+      run: curl https://cli-assets.heroku.com/install.sh | sh
 
     - name: Deploy to Heroku via Git
       env:
